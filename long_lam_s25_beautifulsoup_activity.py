@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # %matplotlib inline
-
+# sd
 from urllib.request import urlopen
 import bs4
 from bs4 import BeautifulSoup
