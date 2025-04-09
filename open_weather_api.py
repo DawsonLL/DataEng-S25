@@ -53,7 +53,7 @@ if weather_json["cod"] != "404":
     print("Here is the current weather: ", weather)
 
     willRain = False
-    print("Is it forecasted to be raining in Portland within the next three days?")
+    print("B. Is it forecasted to be raining in Portland within the next three days?")
     for date in forecast_json["list"]:
         if date["weather"][0]["main"] == "Rain":
             willRain = True
