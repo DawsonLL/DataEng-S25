@@ -1,27 +1,31 @@
-# import required modules
 import requests, json
 
-# Enter your API key here
-api_key = "97a0a27cd642d5d7f92f0f34d70e7d5b"
+api_key = "API_KEY_HERE"
 
-# base_url variable to store url
+# url for current weather
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
-# Give city name
+# url for forecast information
+forecast_url = "http://api.openweathermap.org/data/2.5/forecast?"
+
+# grab city name from user
 city_name = input("Enter city name : ")
 
 # complete_url variable to store
 # complete url address
 complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+forecast_complete_url = forecast_url + "appid=" + api_key + "&q=" + city_name
 
 # get method of requests module
 # return response object
 response = requests.get(complete_url)
+forecast_response = requests.get(forecast_complete_url)
 
 # json method of response object 
 # convert json format data into
 # python format data
-x = response.json()
+weather_json = response.json()
+forecast_json = forecast_response()
 
 # Now x contains list of nested dictionaries
 # Check the value of "cod" key is equal to
@@ -59,20 +63,11 @@ if x["cod"] != "404":
     # the 0th index of z 
     weather = z[0]["main"]
 
-    if(weather == "Rain"):
-        ()
-    # print following values
-    print(" Temperature (in kelvin unit) = " +
-          str(current_temperature) +
-          "\n atmospheric pressure (in hPa unit) = " +
-          str(current_pressure) +
-          "\n humidity (in percentage) = " +
-          str(current_humidity) +
-          "\n description = " +
-          str(weather_description) +
-          "\n weather = " +
-          str(weather))
-else:
-    print(" City Not Found ")
+    print("A. Is it raining in Portland, OR right now?")
+    if(weather == "Clouds"):
+        print("Yes.")
+    else:
+        print("No.")
+    print("Here is the current weather: ", weather)
 
-print(x)
+    print("\n",x)
