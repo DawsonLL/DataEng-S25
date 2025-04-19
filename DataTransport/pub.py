@@ -15,7 +15,7 @@ with open("bcsample.json") as f:
 for record in data:
     message = json.dumps(record).encode("utf-8")
     future = publisher.publish(topic_path, message)
-    print(f"Published message ID: {future.result()}")
+    #print(f"Published message ID: {future.result()}")
     #time.sleep(0.1)  # Optional: slow down for demo/testing
 
 
